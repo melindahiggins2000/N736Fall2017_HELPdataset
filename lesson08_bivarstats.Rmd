@@ -1,0 +1,52 @@
+---
+title: "Bivariate Statistics"
+author: "Melinda K. Higgins, PhD."
+date: "September 20, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+```
+
+## Bivariate Statistics
+
+This lesson focuses on describing and summarizing your data by groups and/or looking at bi-variate associations given the type of each variable:
+
+* continuous - continuous
+    - Pearon's R
+    - Spearman's rho (non-parametric)
+    - Kendall's Tau (non-parametric)
+    
+* continuous - ordinal (or ordinal - ordinal)
+    - Spearman's rho (non-parametric)
+    - Kendall's Tau (non-parametric)
+    
+* categorical - ordinal or continuous
+    - 2 independent groups
+        - t-test
+        - Mann Whitney (non-parametric) test
+    - 3 or more independent groups
+        - ANOVA
+        - Kruskal-Wallis (non-parametric ANOVA)
+        
+* categorical - categorical
+    - Chi-square tests (when <20% of cells have expected counts < 5)
+    - for 2x2, Fisher's Exact Test (when 20%+ cells have expected counts < 5)
+    - for rxc, Fisher-Freeman-Halton Test (when 20%+ cells have expected counts < 5)
+    
+
+## The HELP Dataset 
+
+We are still working with the HELP (Health Evaluation and Linkage to Primary Care) dataset. See details at [https://melindahiggins2000.github.io/N736Fall2017_lesson07/lesson07_univStats.html](https://melindahiggins2000.github.io/N736Fall2017_lesson07/lesson07_univStats.html).
+
+## R Code
+
+Run examples shown in `lesson08_Rcode.R`
+
+## SAS Code
+
+Run examples shown in `lesson08_SAScode.sas`
+
