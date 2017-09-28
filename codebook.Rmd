@@ -2,9 +2,7 @@
 title: "README"
 author: "Melinda K. Higgins, PhD."
 date: "September 27, 2017"
-output: 
-  html_document:
-    keep_md: true
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
