@@ -1,0 +1,153 @@
+---
+title: "README"
+author: "Melinda K. Higgins, PhD."
+date: "September 27, 2017"
+output: 
+  html_document:
+    keep_md: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# N736Fall2017_HELPdataset
+
+N736 Fall 2017 - Details and Supporting Files and Code for HELP dataset
+
+**Data - Basic Data - No Formatting - No Codebook**
+
+* `help.csv` is the RAW basic file with all of the data. This file does NOT have any labels or "codes" defined; i.e. not "formatting" applied
+
+* `help.RData` is the basic data file in a binary format readable by `R`; you can load this into `R` by simply running `load("help.RData")`. This "loads" the data.frame `helpdata` into your Global Environment in `R`.
+
+* `help.sav` is the basic data file in SPSS format. However, this does NOT have any labelling - there is no codebook for this version of the data.
+
+**Data - With Formatting - With a Codebook**
+
+* `helpmkh.sav` is the SPSS formatted datafile WITH the codebook applied - all of the items have labels and where applicable the responses have labels also (i.e. the "codes" and "labels").
+
+* `helpmkh.RData` is the dataset WITH Labels applied in a binary format readable by `R`; you can load this into `R` by simply running `load("helpmkh.RData")`. This "loads" the data.frame `help.spss` into your Global Environment in `R`. The object `help.spss` indicates that this data was read in from the SPSS formatted file WITH the codebook applied - thus the `attributes()` for the variables in this dataset will have labels and "factors" with codes and labels applied.
+
+* `helpmkh.sas7bdat` along with the SAS program `helpmkh.sas` creates the `formats.sas7bcat` formats catalog. Together these help you "apply" the codebook formats to the dataset in `SAS`.
+
+**`R` and `SAS` CODE to get you started**
+
+* `loadHELPdata.R` - use this R script to load the HELP dataset with the codebook applied - this has the variable labels and coded levels
+
+* `loadHELPdata.sas` - run this SAS program AFTER running `helpmkh.sas` to get the dataset into your WORK library.
+
+## Variables in HELP dataset 
+
+### Variable List and Item Labels
+
+All variables are listed below except for `racegrp` and `substance` which are character type variables. These are listed in the next section below. For this table, all variable names, labels and minimum and maximum values are listed (excluding missing data `NA`s).
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+load("helpmkh.RData")
+helpdata <- help.spss
+library(tidyverse)
+
+getlist <- function(x){
+  data.frame(attributes(x)$label,
+             min(x, na.rm=TRUE),
+             max(x, na.rm=TRUE))
+}
+
+dat1 <- helpdata %>%
+  select(-racegrp, -substance)
+
+namesdat1 <- names(dat1)
+
+library(purrr)
+ldf <- purrr::map_df(dat1, getlist)
+row.names(ldf) <- namesdat1
+
+knitr::kable(ldf,
+             digits=1,
+             col.names = c("Item Label","Minimum","Maximum"))
+
+```
+
+
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+#load("helpmkh.RData")
+#helpdata <- help.spss
+#library(tidyverse)
+
+# create a function to get the label
+# label output from the attributes() function
+#getlabel <- function(x) attributes(x)$label
+#a <- getlabel(helpdata$age)
+
+#library(purrr)
+#ldf <- purrr::map_df(helpdata, getlabel) # this is a 1x15 tibble data.frame
+# t(ldf) # transpose for easier reading to a 15x1 single column list
+
+# using knitr to get a table of these
+# variable names for Rmarkdown
+#library(knitr)
+#knitr::kable(t(ldf),
+#             col.names = c("Variable Label"),
+#             caption="HELP Variables")
+```
+
+## Variables with Coded Levels and Their Labels
+
+These next set of tables provide all the variables that have coded levels and labels (i.e. the "codebook" and values used for `PROC FORMAT` in `SAS` and treated as "factors" in `R`).
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+codetable <- function(x){
+  knitr::kable(attributes(x)$labels,
+             col.names = attributes(x)$label)
+  }
+
+codetable(helpdata$treat)
+
+codedvars <- helpdata %>%
+  select(treat, female, homeless, g1b, 
+         satreat, drinkstatus, anysubstatus,
+         linkstatus, f1a, f1b, f1c, f1d, f1e,
+         f1f, f1g, f1h, f1i, f1j, f1k, f1l,
+         f1m, f1n, f1o, f1p, f1q, f1r, f1s, f1t)
+
+#sapply(codedvars, codetable)
+
+knitr::kable(names(table(helpdata$racegrp)),
+             col.names = attributes(helpdata$racegrp)$label)
+
+knitr::kable(names(table(helpdata$substance)),
+             col.names = attributes(helpdata$substance)$label)
+
+codetable(helpdata$female)
+codetable(helpdata$homeless)
+codetable(helpdata$g1b)
+codetable(helpdata$satreat)
+codetable(helpdata$drinkstatus)
+codetable(helpdata$anysubstatus)       
+codetable(helpdata$linkstatus)
+codetable(helpdata$f1a)
+codetable(helpdata$f1b)
+codetable(helpdata$f1c)
+codetable(helpdata$f1d)
+codetable(helpdata$f1e)        
+codetable(helpdata$f1f)
+codetable(helpdata$f1g)
+codetable(helpdata$f1h)
+codetable(helpdata$f1i)
+codetable(helpdata$g1b)
+codetable(helpdata$f1k)
+codetable(helpdata$f1l)         
+codetable(helpdata$f1m)
+codetable(helpdata$f1n)
+codetable(helpdata$f1o)
+codetable(helpdata$f1p)
+codetable(helpdata$f1q)
+codetable(helpdata$f1r)
+codetable(helpdata$f1s)
+codetable(helpdata$f1t)
+```
+
