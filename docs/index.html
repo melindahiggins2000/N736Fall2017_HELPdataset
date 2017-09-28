@@ -129,20 +129,25 @@ $(document).ready(function () {
 <p>N736 Fall 2017 - Details and Supporting Files and Code for HELP dataset</p>
 <p><strong>Data - Basic Data - No Formatting - No Codebook</strong></p>
 <ul>
-<li><p><code>help.csv</code> is the RAW basic file with all of the data. This file does NOT have any labels or “codes” defined; i.e. not “formatting” applied</p></li>
-<li><p><code>help.RData</code> is the basic data file in a binary format readable by <code>R</code>; you can load this into <code>R</code> by simply running <code>load(&quot;help.RData&quot;)</code>. This “loads” the data.frame <code>helpdata</code> into your Global Environment in <code>R</code>.</p></li>
-<li><p><code>help.sav</code> is the basic data file in SPSS format. However, this does NOT have any labelling - there is no codebook for this version of the data.</p></li>
+<li><p><code>help.csv</code> is the RAW basic file with all of the data. This file does NOT have any labels or “codes” defined; i.e. not “formatting” applied <a href="https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/help.csv" class="uri">https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/help.csv</a></p></li>
+<li><p><code>help.RData</code> is the basic data file in a binary format readable by <code>R</code>; you can load this into <code>R</code> by simply running <code>load(&quot;help.RData&quot;)</code>. This “loads” the data.frame <code>helpdata</code> into your Global Environment in <code>R</code>. <a href="https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/help.Rdata" class="uri">https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/help.Rdata</a></p></li>
+<li><p><code>help.sav</code> is the basic data file in SPSS format. However, this does NOT have any labelling - there is no codebook for this version of the data. <a href="https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/help.sav" class="uri">https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/help.sav</a></p></li>
 </ul>
 <p><strong>Data - With Formatting - With a Codebook</strong></p>
 <ul>
-<li><p><code>helpmkh.sav</code> is the SPSS formatted datafile WITH the codebook applied - all of the items have labels and where applicable the responses have labels also (i.e. the “codes” and “labels”).</p></li>
-<li><p><code>helpmkh.RData</code> is the dataset WITH Labels applied in a binary format readable by <code>R</code>; you can load this into <code>R</code> by simply running <code>load(&quot;helpmkh.RData&quot;)</code>. This “loads” the data.frame <code>help.spss</code> into your Global Environment in <code>R</code>. The object <code>help.spss</code> indicates that this data was read in from the SPSS formatted file WITH the codebook applied - thus the <code>attributes()</code> for the variables in this dataset will have labels and “factors” with codes and labels applied.</p></li>
-<li><p><code>helpmkh.sas7bdat</code> along with the SAS program <code>helpmkh.sas</code> creates the <code>formats.sas7bcat</code> formats catalog. Together these help you “apply” the codebook formats to the dataset in <code>SAS</code>.</p></li>
+<li><p><code>helpmkh.sav</code> is the SPSS formatted datafile WITH the codebook applied - all of the items have labels and where applicable the responses have labels also (i.e. the “codes” and “labels”). <a href="https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/helpmkh.sav" class="uri">https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/helpmkh.sav</a></p></li>
+<li><p><code>helpmkh.RData</code> is the dataset WITH Labels applied in a binary format readable by <code>R</code>; you can load this into <code>R</code> by simply running <code>load(&quot;helpmkh.RData&quot;)</code>. This “loads” the data.frame <code>help.spss</code> into your Global Environment in <code>R</code>. The object <code>help.spss</code> indicates that this data was read in from the SPSS formatted file WITH the codebook applied - thus the <code>attributes()</code> for the variables in this dataset will have labels and “factors” with codes and labels applied. <a href="https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/helpmkh.RData" class="uri">https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/helpmkh.RData</a></p></li>
+<li><code>helpmkh.sas7bdat</code> along with the SAS program <code>helpmkh.sas</code> creates the <code>formats.sas7bcat</code> formats catalog. Together these help you “apply” the codebook formats to the dataset in <code>SAS</code>.
+<ul>
+<li><a href="https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/helpmkh.sas7bdat" class="uri">https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/helpmkh.sas7bdat</a></li>
+<li><a href="https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/helpmkh.sas" class="uri">https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/helpmkh.sas</a></li>
+<li><a href="https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/formats.sas7bcat" class="uri">https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/formats.sas7bcat</a></li>
+</ul></li>
 </ul>
 <p><strong><code>R</code> and <code>SAS</code> CODE to get you started</strong></p>
 <ul>
-<li><p><code>loadHELPdata.R</code> - use this R script to load the HELP dataset with the codebook applied - this has the variable labels and coded levels</p></li>
-<li><p><code>loadHELPdata.sas</code> - run this SAS program AFTER running <code>helpmkh.sas</code> to get the dataset into your WORK library.</p></li>
+<li><p><code>loadHELPdata.R</code> - use this R script to load the HELP dataset with the codebook applied - this has the variable labels and coded levels <a href="https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/loadHELPdata.R" class="uri">https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/loadHELPdata.R</a></p></li>
+<li><p><code>loadHELPdata.sas</code> - run this SAS program AFTER running <code>helpmkh.sas</code> to get the dataset into your WORK library. <a href="https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/loadHELPdata.sas" class="uri">https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/loadHELPdata.sas</a></p></li>
 </ul>
 <div id="variables-in-help-dataset" class="section level2">
 <h2>Variables in HELP dataset</h2>
@@ -150,6 +155,7 @@ $(document).ready(function () {
 <h3>Variable List and Item Labels</h3>
 <p>All variables are listed below except for <code>racegrp</code> and <code>substance</code> which are character type variables. These are listed in the next section below. For this table, all variable names, labels and minimum and maximum values are listed (excluding missing data <code>NA</code>s).</p>
 <table>
+<caption>HELP Variables without <code>racegrp</code> and <code>substance</code></caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -682,24 +688,8 @@ $(document).ready(function () {
 <div id="variables-with-coded-levels-and-their-labels" class="section level2">
 <h2>Variables with Coded Levels and Their Labels</h2>
 <p>These next set of tables provide all the variables that have coded levels and labels (i.e. the “codebook” and values used for <code>PROC FORMAT</code> in <code>SAS</code> and treated as “factors” in <code>R</code>).</p>
-<table>
-<thead>
-<tr class="header">
-<th></th>
-<th align="right">Randomization Group</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>usual care</td>
-<td align="right">0</td>
-</tr>
-<tr class="even">
-<td>HELP clinic</td>
-<td align="right">1</td>
-</tr>
-</tbody>
-</table>
+<div id="codes-for-racegrp-and-substance" class="section level3">
+<h3>Codes for <code>racegrp</code> and <code>substance</code></h3>
 <table>
 <thead>
 <tr class="header">
@@ -739,7 +729,30 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
+</div>
+<div id="codes-for-rest-of-the-variables" class="section level3">
+<h3>Codes for rest of the variables …</h3>
 <table>
+<caption>HELP Variable <code>treat</code></caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Randomization Group</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>usual care</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td>HELP clinic</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>HELP Variable <code>female</code></caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -758,6 +771,7 @@ $(document).ready(function () {
 </tbody>
 </table>
 <table>
+<caption>HELP Variable <code>homeless</code></caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -776,6 +790,7 @@ $(document).ready(function () {
 </tbody>
 </table>
 <table>
+<caption>HELP Variable <code>g1b</code></caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -794,6 +809,7 @@ $(document).ready(function () {
 </tbody>
 </table>
 <table>
+<caption>HELP Variable <code>satreat</code></caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -812,6 +828,7 @@ $(document).ready(function () {
 </tbody>
 </table>
 <table>
+<caption>HELP Variable <code>drinkstatus</code></caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -830,6 +847,7 @@ $(document).ready(function () {
 </tbody>
 </table>
 <table>
+<caption>HELP Variable <code>anysubstatus</code></caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -848,6 +866,7 @@ $(document).ready(function () {
 </tbody>
 </table>
 <table>
+<caption>HELP Variable <code>linkstatus</code></caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -866,6 +885,7 @@ $(document).ready(function () {
 </tbody>
 </table>
 <table>
+<caption>HELP Variable <code>f1a</code></caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -892,6 +912,7 @@ $(document).ready(function () {
 </tbody>
 </table>
 <table>
+<caption>HELP Variable <code>f1b</code></caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -918,6 +939,7 @@ $(document).ready(function () {
 </tbody>
 </table>
 <table>
+<caption>HELP Variable <code>f1c</code></caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -944,6 +966,7 @@ $(document).ready(function () {
 </tbody>
 </table>
 <table>
+<caption>HELP Variable <code>f1d</code></caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -970,6 +993,7 @@ $(document).ready(function () {
 </tbody>
 </table>
 <table>
+<caption>HELP Variable <code>f1e</code></caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -996,6 +1020,7 @@ $(document).ready(function () {
 </tbody>
 </table>
 <table>
+<caption>HELP Variable <code>f1f</code></caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -1022,6 +1047,7 @@ $(document).ready(function () {
 </tbody>
 </table>
 <table>
+<caption>HELP Variable <code>f1g</code></caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -1048,6 +1074,7 @@ $(document).ready(function () {
 </tbody>
 </table>
 <table>
+<caption>HELP Variable <code>f1h</code></caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -1074,6 +1101,7 @@ $(document).ready(function () {
 </tbody>
 </table>
 <table>
+<caption>HELP Variable <code>f1i</code></caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -1100,6 +1128,7 @@ $(document).ready(function () {
 </tbody>
 </table>
 <table>
+<caption>HELP Variable <code>g1b</code></caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -1118,6 +1147,7 @@ $(document).ready(function () {
 </tbody>
 </table>
 <table>
+<caption>HELP Variable <code>f1k</code></caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -1144,6 +1174,7 @@ $(document).ready(function () {
 </tbody>
 </table>
 <table>
+<caption>HELP Variable <code>f1l</code></caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -1170,6 +1201,7 @@ $(document).ready(function () {
 </tbody>
 </table>
 <table>
+<caption>HELP Variable <code>f1m</code></caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -1196,6 +1228,7 @@ $(document).ready(function () {
 </tbody>
 </table>
 <table>
+<caption>HELP Variable <code>f1n</code></caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -1222,6 +1255,7 @@ $(document).ready(function () {
 </tbody>
 </table>
 <table>
+<caption>HELP Variable <code>f1o</code></caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -1248,6 +1282,7 @@ $(document).ready(function () {
 </tbody>
 </table>
 <table>
+<caption>HELP Variable <code>f1p</code></caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -1274,6 +1309,7 @@ $(document).ready(function () {
 </tbody>
 </table>
 <table>
+<caption>HELP Variable <code>f1q</code></caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -1300,6 +1336,7 @@ $(document).ready(function () {
 </tbody>
 </table>
 <table>
+<caption>HELP Variable <code>f1r</code></caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -1326,6 +1363,7 @@ $(document).ready(function () {
 </tbody>
 </table>
 <table>
+<caption>HELP Variable <code>f1s</code></caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -1352,6 +1390,7 @@ $(document).ready(function () {
 </tbody>
 </table>
 <table>
+<caption>HELP Variable <code>f1t</code></caption>
 <thead>
 <tr class="header">
 <th></th>
@@ -1377,6 +1416,7 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 </div>
 

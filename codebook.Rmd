@@ -15,25 +15,28 @@ N736 Fall 2017 - Details and Supporting Files and Code for HELP dataset
 
 **Data - Basic Data - No Formatting - No Codebook**
 
-* `help.csv` is the RAW basic file with all of the data. This file does NOT have any labels or "codes" defined; i.e. not "formatting" applied
+* `help.csv` is the RAW basic file with all of the data. This file does NOT have any labels or "codes" defined; i.e. not "formatting" applied [https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/help.csv](https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/help.csv)
 
-* `help.RData` is the basic data file in a binary format readable by `R`; you can load this into `R` by simply running `load("help.RData")`. This "loads" the data.frame `helpdata` into your Global Environment in `R`.
+* `help.RData` is the basic data file in a binary format readable by `R`; you can load this into `R` by simply running `load("help.RData")`. This "loads" the data.frame `helpdata` into your Global Environment in `R`. [https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/help.Rdata](https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/help.Rdata)
 
-* `help.sav` is the basic data file in SPSS format. However, this does NOT have any labelling - there is no codebook for this version of the data.
+* `help.sav` is the basic data file in SPSS format. However, this does NOT have any labelling - there is no codebook for this version of the data. [https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/help.sav](https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/help.sav)
 
 **Data - With Formatting - With a Codebook**
 
-* `helpmkh.sav` is the SPSS formatted datafile WITH the codebook applied - all of the items have labels and where applicable the responses have labels also (i.e. the "codes" and "labels").
+* `helpmkh.sav` is the SPSS formatted datafile WITH the codebook applied - all of the items have labels and where applicable the responses have labels also (i.e. the "codes" and "labels"). [https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/helpmkh.sav](https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/helpmkh.sav)
 
-* `helpmkh.RData` is the dataset WITH Labels applied in a binary format readable by `R`; you can load this into `R` by simply running `load("helpmkh.RData")`. This "loads" the data.frame `help.spss` into your Global Environment in `R`. The object `help.spss` indicates that this data was read in from the SPSS formatted file WITH the codebook applied - thus the `attributes()` for the variables in this dataset will have labels and "factors" with codes and labels applied.
+* `helpmkh.RData` is the dataset WITH Labels applied in a binary format readable by `R`; you can load this into `R` by simply running `load("helpmkh.RData")`. This "loads" the data.frame `help.spss` into your Global Environment in `R`. The object `help.spss` indicates that this data was read in from the SPSS formatted file WITH the codebook applied - thus the `attributes()` for the variables in this dataset will have labels and "factors" with codes and labels applied. [https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/helpmkh.RData](https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/helpmkh.RData)
 
 * `helpmkh.sas7bdat` along with the SAS program `helpmkh.sas` creates the `formats.sas7bcat` formats catalog. Together these help you "apply" the codebook formats to the dataset in `SAS`.
+    - [https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/helpmkh.sas7bdat](https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/helpmkh.sas7bdat)
+    - [https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/helpmkh.sas](https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/helpmkh.sas)
+    - [https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/formats.sas7bcat](https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/formats.sas7bcat)
 
 **`R` and `SAS` CODE to get you started**
 
-* `loadHELPdata.R` - use this R script to load the HELP dataset with the codebook applied - this has the variable labels and coded levels
+* `loadHELPdata.R` - use this R script to load the HELP dataset with the codebook applied - this has the variable labels and coded levels [https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/loadHELPdata.R](https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/loadHELPdata.R)
 
-* `loadHELPdata.sas` - run this SAS program AFTER running `helpmkh.sas` to get the dataset into your WORK library.
+* `loadHELPdata.sas` - run this SAS program AFTER running `helpmkh.sas` to get the dataset into your WORK library. [https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/loadHELPdata.sas](https://github.com/melindahiggins2000/N736Fall2017_HELPdataset/blob/master/loadHELPdata.sas)
 
 ## Variables in HELP dataset 
 
@@ -63,7 +66,8 @@ row.names(ldf) <- namesdat1
 
 knitr::kable(ldf,
              digits=1,
-             col.names = c("Item Label","Minimum","Maximum"))
+             col.names = c("Item Label","Minimum","Maximum"),
+             caption="HELP Variables without `racegrp` and `substance`")
 
 ```
 
@@ -96,14 +100,27 @@ knitr::kable(ldf,
 
 These next set of tables provide all the variables that have coded levels and labels (i.e. the "codebook" and values used for `PROC FORMAT` in `SAS` and treated as "factors" in `R`).
 
+### Codes for `racegrp` and `substance`
+
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 
-codetable <- function(x){
+knitr::kable(names(table(helpdata$racegrp)),
+             col.names = attributes(helpdata$racegrp)$label)
+
+knitr::kable(names(table(helpdata$substance)),
+             col.names = attributes(helpdata$substance)$label)
+```
+
+### Codes for rest of the variables ...
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+codetable <- function(x,captitle="  "){
   knitr::kable(attributes(x)$labels,
-             col.names = attributes(x)$label)
+             col.names = attributes(x)$label,
+             caption=captitle)
   }
 
-codetable(helpdata$treat)
+codetable(helpdata$treat,"HELP Variable `treat`")
 
 codedvars <- helpdata %>%
   select(treat, female, homeless, g1b, 
@@ -114,38 +131,32 @@ codedvars <- helpdata %>%
 
 #sapply(codedvars, codetable)
 
-knitr::kable(names(table(helpdata$racegrp)),
-             col.names = attributes(helpdata$racegrp)$label)
-
-knitr::kable(names(table(helpdata$substance)),
-             col.names = attributes(helpdata$substance)$label)
-
-codetable(helpdata$female)
-codetable(helpdata$homeless)
-codetable(helpdata$g1b)
-codetable(helpdata$satreat)
-codetable(helpdata$drinkstatus)
-codetable(helpdata$anysubstatus)       
-codetable(helpdata$linkstatus)
-codetable(helpdata$f1a)
-codetable(helpdata$f1b)
-codetable(helpdata$f1c)
-codetable(helpdata$f1d)
-codetable(helpdata$f1e)        
-codetable(helpdata$f1f)
-codetable(helpdata$f1g)
-codetable(helpdata$f1h)
-codetable(helpdata$f1i)
-codetable(helpdata$g1b)
-codetable(helpdata$f1k)
-codetable(helpdata$f1l)         
-codetable(helpdata$f1m)
-codetable(helpdata$f1n)
-codetable(helpdata$f1o)
-codetable(helpdata$f1p)
-codetable(helpdata$f1q)
-codetable(helpdata$f1r)
-codetable(helpdata$f1s)
-codetable(helpdata$f1t)
+codetable(helpdata$female,"HELP Variable `female`")
+codetable(helpdata$homeless,"HELP Variable `homeless`")
+codetable(helpdata$g1b,"HELP Variable `g1b`")
+codetable(helpdata$satreat,"HELP Variable `satreat`")
+codetable(helpdata$drinkstatus,"HELP Variable `drinkstatus`")
+codetable(helpdata$anysubstatus,"HELP Variable `anysubstatus`")       
+codetable(helpdata$linkstatus,"HELP Variable `linkstatus`")
+codetable(helpdata$f1a,"HELP Variable `f1a`")
+codetable(helpdata$f1b,"HELP Variable `f1b`")
+codetable(helpdata$f1c,"HELP Variable `f1c`")
+codetable(helpdata$f1d,"HELP Variable `f1d`")
+codetable(helpdata$f1e,"HELP Variable `f1e`")        
+codetable(helpdata$f1f,"HELP Variable `f1f`")
+codetable(helpdata$f1g,"HELP Variable `f1g`")
+codetable(helpdata$f1h,"HELP Variable `f1h`")
+codetable(helpdata$f1i,"HELP Variable `f1i`")
+codetable(helpdata$g1b,"HELP Variable `g1b`")
+codetable(helpdata$f1k,"HELP Variable `f1k`")
+codetable(helpdata$f1l,"HELP Variable `f1l`")         
+codetable(helpdata$f1m,"HELP Variable `f1m`")
+codetable(helpdata$f1n,"HELP Variable `f1n`")
+codetable(helpdata$f1o,"HELP Variable `f1o`")
+codetable(helpdata$f1p,"HELP Variable `f1p`")
+codetable(helpdata$f1q,"HELP Variable `f1q`")
+codetable(helpdata$f1r,"HELP Variable `f1r`")
+codetable(helpdata$f1s,"HELP Variable `f1s`")
+codetable(helpdata$f1t,"HELP Variable `f1t`")
 ```
 
